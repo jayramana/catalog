@@ -1,0 +1,123 @@
+[
+    {
+        "checked":false,
+        "name": "Adidas Nebzed",
+        "Category":"Shoe",
+        "Details":"Men lifestyle Green All team shoes",
+        "modelno":"AGFR12345",
+        "skuid": 1,
+        "stockonhand":30,
+        "Cost_Price" : 2455,
+        "Selling_Price":2455,
+        "Quantity":25,
+        "add":1,
+        "counts":{
+            "flipkart":0,
+            "amazon":0,
+            "meesho" : 0,
+            "ajio":0,
+            "myntraa":0
+        }
+        
+        
+    },
+    {
+        "checked":false,
+        "name": "Adidas Nebzed",
+        "Category":"Shoe",
+        "Details":"Men lifestyle Green All team shoes",
+        "modelno":"AGFR12345",
+        "skuid": 2,
+        "stockonhand":30,
+        "Cost_Price" : 3456,
+        "Selling_Price":3456,
+        "Quantity":25,
+        "add" : 1,
+        "cid" : 2,
+        "counts":{
+            "flipkart":0,
+            "amazon":0,
+            "meesho" : 0,
+            "ajio":0,
+            "myntraa":0
+        }
+        
+        
+        
+    },
+    {
+        "checked":false,
+        "name": "Adidas Nebzed",
+        "Category":"Shoe",
+        "Details":"Men lifestyle Green All team shoes",
+        "modelno":"AGFR12345",
+        "skuid": 3,
+        "stockonhand":30,
+        "Cost_Price" : 4000,
+        "Selling_Price":4000,
+        "Quantity":25,
+        "add" : 1,
+        "cid" : 3,
+        "counts":{
+            "flipkart":0,
+            "amazon":0,
+            "meesho" : 0,
+            "ajio":0,
+            "myntraa":0
+        }
+        
+        
+        
+    },
+    {
+        "checked":false,
+        "name": "Adidas Nebzed",
+        "Category":"Shoe",
+        "Details":"Men lifestyle Green All team shoes",
+        "modelno":"AGFR12345",
+        "skuid": 4,
+        "stockonhand":30,
+        "Cost_Price" : 3456,
+        "Selling_Price":3456,
+        "Quantity":25,
+        "add" : 1,
+        "cid" : 4,
+        "counts":{
+            "flipkart":0,
+            "amazon":0,
+            "meesho" : 0,
+            "ajio":0,
+            "myntraa":0
+        }
+        
+        
+        
+    },
+    {
+        "checked":false,
+        "name": "Adidas Nebzed",
+        "Category":"Shoe",
+        "Details":"Men lifestyle Green All team shoes",
+        "modelno":"AGFR12345",
+        "skuid": 5,
+        "stockonhand":30,
+        "Cost_Price" : 4000,
+        "Selling_Price": 4000,
+        "Quantity":25,
+        "add" : 1,
+        "cid" : 5,
+        "counts":{
+            "flipkart":0,
+            "amazon":0,
+            "meesho" : 0,
+            "ajio":0,
+            "myntraa":0
+        }
+        
+        
+        
+    }
+    
+    
+    
+]
