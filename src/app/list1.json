@@ -1,123 +1,115 @@
 [
-    {
-        "checked":false,
-        "name": "Adidas Nebzed",
-        "Category":"Shoe",
-        "Details":"Men lifestyle Green All team shoes",
-        "modelno":"AGFR12345",
-        "skuid": 1,
-        "stockonhand":30,
-        "Cost_Price" : 2455,
-        "Selling_Price":2455,
-        "Quantity":25,
-        "add":1,
-        "counts":{
-            "flipkart":0,
-            "amazon":0,
-            "meesho" : 0,
-            "ajio":0,
-            "myntraa":0
-        }
-        
-        
-    },
-    {
-        "checked":false,
-        "name": "Adidas Nebzed",
-        "Category":"Shoe",
-        "Details":"Men lifestyle Green All team shoes",
-        "modelno":"AGFR12345",
-        "skuid": 2,
-        "stockonhand":30,
-        "Cost_Price" : 3456,
-        "Selling_Price":3456,
-        "Quantity":25,
-        "add" : 1,
-        "cid" : 2,
-        "counts":{
-            "flipkart":0,
-            "amazon":0,
-            "meesho" : 0,
-            "ajio":0,
-            "myntraa":0
-        }
-        
-        
-        
-    },
-    {
-        "checked":false,
-        "name": "Adidas Nebzed",
-        "Category":"Shoe",
-        "Details":"Men lifestyle Green All team shoes",
-        "modelno":"AGFR12345",
-        "skuid": 3,
-        "stockonhand":30,
-        "Cost_Price" : 4000,
-        "Selling_Price":4000,
-        "Quantity":25,
-        "add" : 1,
-        "cid" : 3,
-        "counts":{
-            "flipkart":0,
-            "amazon":0,
-            "meesho" : 0,
-            "ajio":0,
-            "myntraa":0
-        }
-        
-        
-        
-    },
-    {
-        "checked":false,
-        "name": "Adidas Nebzed",
-        "Category":"Shoe",
-        "Details":"Men lifestyle Green All team shoes",
-        "modelno":"AGFR12345",
-        "skuid": 4,
-        "stockonhand":30,
-        "Cost_Price" : 3456,
-        "Selling_Price":3456,
-        "Quantity":25,
-        "add" : 1,
-        "cid" : 4,
-        "counts":{
-            "flipkart":0,
-            "amazon":0,
-            "meesho" : 0,
-            "ajio":0,
-            "myntraa":0
-        }
-        
-        
-        
-    },
-    {
-        "checked":false,
-        "name": "Adidas Nebzed",
-        "Category":"Shoe",
-        "Details":"Men lifestyle Green All team shoes",
-        "modelno":"AGFR12345",
-        "skuid": 5,
-        "stockonhand":30,
-        "Cost_Price" : 4000,
-        "Selling_Price": 4000,
-        "Quantity":25,
-        "add" : 1,
-        "cid" : 5,
-        "counts":{
-            "flipkart":0,
-            "amazon":0,
-            "meesho" : 0,
-            "ajio":0,
-            "myntraa":0
-        }
-        
-        
-        
+  {
+    "checked": false,
+    "name": "Adidas Nebzed",
+    "Category": "Shoe",
+    "src": "/image/shoe.svg",
+
+    "Details": "Men lifestyle Green All team shoes",
+    "modelno": "AGFR12345",
+    "skuid": 1,
+    "stockonhand": 30,
+    "Cost_Price": 2455,
+    "Selling_Price": 2455,
+    "Quantity": 25,
+    "add": 1,
+    "counts": {
+      "flipkart": 1,
+      "amazon": 1,
+      "meesho": 1,
+      "ajio": 1,
+      "myntraa": 1
     }
-    
-    
-    
+  },
+  {
+    "checked": false,
+    "name": "Water Bottle",
+    "src": "/image/water.jpg",
+
+    "Category": "Bottle",
+    "Details": "Men lifestyle Green All team shoes",
+    "modelno": "AGFR12345",
+    "skuid": 2,
+    "stockonhand": 30,
+    "Cost_Price": 3456,
+    "Selling_Price": 3456,
+    "Quantity": 25,
+    "add": 1,
+    "cid": 2,
+    "counts": {
+      "flipkart": 1,
+      "amazon": 1,
+      "meesho": 1,
+      "ajio": 1,
+      "myntraa": 1
+    }
+  },
+  {
+    "checked": false,
+    "name": "Non stick Pan",
+    "Category": "Utensils",
+    "Details": "Men lifestyle Green All team shoes",
+    "src": "/image/pan.jpg",
+    "modelno": "AGFR12345",
+    "skuid": 3,
+    "stockonhand": 30,
+    "Cost_Price": 4000,
+    "Selling_Price": 4000,
+    "Quantity": 25,
+    "add": 1,
+    "cid": 3,
+    "counts": {
+      "flipkart": 1,
+      "amazon": 1,
+      "meesho": 1,
+      "ajio": 1,
+      "myntraa": 1
+    }
+  },
+  {
+    "checked": false,
+    "name": "Men's Shirt",
+    "Category": "Shirts",
+    "Details": "Men lifestyle Green All team shoes",
+
+    "src": "/image/shirts.png",
+
+    "modelno": "AGFR12345",
+    "skuid": 4,
+    "stockonhand": 30,
+    "Cost_Price": 3456,
+    "Selling_Price": 3456,
+    "Quantity": 25,
+    "add": 1,
+    "cid": 4,
+    "counts": {
+      "flipkart": 1,
+      "amazon": 1,
+      "meesho": 1,
+      "ajio": 1,
+      "myntraa": 1
+    }
+  },
+  {
+    "checked": false,
+    "name": "Plastic Container",
+    "Category": "Plastic",
+    "Details": "Men lifestyle Green All team shoes",
+    "modelno": "AGFR12345",
+    "skuid": 5,
+    "stockonhand": 30,
+    "src": "/image/plastic.jpg",
+    "Cost_Price": 4000,
+    "Selling_Price": 4000,
+    "Quantity": 25,
+    "add": 1,
+    "cid": 5,
+    "counts": {
+      "flipkart": 1,
+      "amazon": 1,
+      "meesho": 1,
+      "ajio": 1,
+      "myntraa": 1
+    }
+  }
 ]

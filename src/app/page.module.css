@@ -2,10 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 .main {
-  position: relative;
-  display: grid;
-  grid-template-columns: 2fr 10fr;
+  display: flex;
   height: 100vh;
+  gap: .1rem;
   background-color: #f3f6f9;
   /* z-index: 1; */
   overflow-x: hidden;
@@ -32,18 +31,17 @@
   color: #2c7be5;
   font-size: small;
 }
-.left {
-  position: relative;
+.left{
+  transition: all 0.3s;
+  width: 70px;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background-color: #002244;
-  gap: 6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s;
+  height: 100vh;
+  align-items: flex-start;
+  gap: 1rem;
+
 }
 .font {
   font-family: "DM Sans";
@@ -65,6 +63,8 @@
   color: #b8b8b8;
   font-weight: 590;
   font-size: 13px;
+  visibility: hidden;
+  margin-top: 0.4rem;
   margin-bottom: 0.2rem;
 }
 .focus {
@@ -80,6 +80,7 @@
   transform: translateY(-70px);
 }
 .more {
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -120,7 +121,7 @@
 }
 
 .right {
-  position: relative;
+  transform: translateX(10px);
   width: 100vw;
   background-color: #f3f6f9;
 }
@@ -154,9 +155,10 @@
   gap: 0.4rem;
 }
 .same {
-  color: #2b3674;
+  color: #002244;
   font-family: "DM Sans";
   font-size: small;
+  font-weight: 700;
 }
 .label{
   background-color: #F3F6F9;
@@ -170,7 +172,6 @@
   margin: 1rem 0rem 1rem 0.5rem;
   background-color: white;
   justify-content: space-between;
-  width: 97%;
   padding: 1rem 1rem;
   border-radius: 11px;
 }
@@ -212,7 +213,9 @@
   display: grid;
   grid-template-columns: repeat(11,90px);
   gap: 2rem;
+  padding: 0.5rem 0;
   /* width: 97%; */
+  color: #717171;
   margin-left: 0.5rem;
 }
 
@@ -275,7 +278,7 @@
   justify-content: space-between;
   background-color: white;
   padding-left: 2rem;
-  width: 97%;
+  /* width: 97%; */
   border-radius: 11px;
   padding: 1rem 0;
   margin-left: 0.5rem;
@@ -326,7 +329,7 @@
 .collection {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
-  width: 97%;
+  /* width: 97%; */
   margin-left: 1rem;
 }
 
@@ -373,8 +376,8 @@ padding: 0 1rem;
   border-radius: 11px;
   margin-right: 1rem;
 }
-[data-column-id="name"].rdt_TableCol {
-  background-color: orange;
+.hov:hover{
+  cursor: pointer;
 }
 
 .multiple{
@@ -383,7 +386,7 @@ padding: 0 1rem;
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.3rem;
 
   background-color: white;
   z-index: 1;
@@ -391,7 +394,7 @@ padding: 0 1rem;
   padding: 1.5rem 2rem;
   border-radius: 11px;
   color: #000;
-  top: 25%;
+  top: 15%;
   left: 50%;
   transform: translateX(-40%);
 }
@@ -441,12 +444,19 @@ padding: 0 1rem;
 
 }
 .final{
-  background-color: white;
   padding: 0.8rem 0;
   width: 96%;
   border-bottom: 1px solid #D9D9D9;
 }
-
+.dv{
+  overflow-x: scroll;
+}
+.dv::-webkit-scrollbar{
+  width:0;
+  display: none;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+}
 .verticalup{
   justify-content: center;
   align-items: flex-start;
@@ -476,6 +486,7 @@ padding: 0 1rem;
   margin-bottom: 0.3rem;
   font-family: "DM Sans";
   font-weight: 600;
+  gap: 5rem;
   margin-right:0.5rem;
 }
 

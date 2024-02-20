@@ -1,15 +1,23 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import React from "react";
+import React, { useReducer } from "react";
 import Logo from "./Seller .svg";
-import NavLogo from "./Seller1.svg";
+import product from "./product.svg";
+import smallprofile from "./smallprofile.svg";
+import signin from "./sigin.svg";
+import seperator from "./Separator.svg";
+import inventory from "./inventory.svg";
+import catalogue from "./catalogue.svg";
+import home from "./home.svg";
 import Pencil from "./pencil.svg";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { IoMdClose } from "react-icons/io";
-import profile from './profile.svg';
+import small from "./smallicon.svg";
+
+import profile from "./profile.svg";
 import left from "./left.svg";
+import Plus from "./plus.svg";
 import right from "./right.svg";
 import Shoe from "./shoe.svg";
 
@@ -22,27 +30,42 @@ import {
   Checkbox,
   SelectChangeEvent,
   OutlinedInput,
+  Typography,
 } from "@mui/material";
 import jsonData from "./list1.json";
 import { BiBorderRadius } from "react-icons/bi";
 
 export default function Home() {
   const [Jdata, setDatas] = useState(jsonData);
+  const hvrRef: any = useRef(null);
+  const oRef: any = useRef(null);
+const tRef: any = useRef(null);
+  const thRef: any = useRef(null);
+
+  const fRef: any = useRef(null);
+
+  const fiRef: any = useRef(null);
+
+  const sRef: any = useRef(null);
+
+  const moreRef: any = useRef(null);
+
+  const menu1Ref: any = useRef(null);
+
   let [count, setCount] = useState(0);
   const [det, setDet] = useState(0);
   const [selectValue, setSelectValue] = useState([]);
   let [update, setUpdate] = useState(1);
   console.log(selectValue);
-  const dummyRef = useRef(null);
+  const dummyRef: any = useRef(null);
   const [filter, setFilter] = useState("");
   const [scrollPosition, setScrollPosition] = useState(0);
-  const containerRef = useRef(null);
-  const detRef = useRef(null);
-  const mulRef = useRef(null);
+  const containerRef: any = useRef(null);
+  const detRef: any = useRef(null);
+  const mulRef: any = useRef(null);
   const Customcell1 = { paddingBottom: "2rem" };
 
-  useEffect(() => {
-  }, [Jdata]);
+  useEffect(() => {}, [Jdata]);
 
   const [complst, setComplst] = useState([
     {
@@ -76,65 +99,9 @@ export default function Home() {
       quantity: 1,
     },
   ]);
-  const columns = [
-    {
-      name: "",
-      selector: (row: any) => (
-        <input
-          type="checkbox"
-          className={styles.cbx}
-          onChange={() => handleClick(row.skuid)}
-        />
-      ),
-    },
-    {
-      name: "PRODUCT NAME",
-      id: "name",
-      selector: (row: { name: any }) => row.name,
-      wrap: true,
-      style: { backgroundColor: "green" },
-    },
-    { name: "SELLER SKU ID", selector: (row: { skuid: any }) => row.skuid },
-    { name: "CATEGORY", selector: (row: { Category: any }) => row.Category },
-    {
-      name: "PRODUCT DETAILS",
-      selector: (row: { Details: any }) => row.Details,
-      wrap: true,
-    },
-    { name: "MODEL NUMBER", selector: (row: { modelno: any }) => row.modelno },
-    { name: "PRICE", selector: (row: { Cost_Price: any }) => row.Cost_Price },
-    {
-      name: "SELLING PRICE",
-      selector: (row: { Selling_Price: any }) => row.Selling_Price,
-    },
-    { name: "QUANTITY", selector: (row: { Quantity: any }) => row.Quantity },
-    {
-      name: "",
-      selector: (row: any) => (
-        <img height={30} width={30} src={"/image/pencil.png"} />
-      ),
-    },
-    {
-      name: "",
-      selector: (row: { name: any; skuid: any }) => (
-        <button onClick={() => handleDelete(row.skuid)}>
-          <img height={30} width={30} src={"/image/bin.png"} />
-        </button>
-      ),
-    },
-    {
-      name: "",
-      selector: (row: { name: any; skuid: any }) => (
-        <button
-          onClick={() => {
-            handleDet(row.skuid), Detappear();
-          }}
-        >
-          Details
-        </button>
-      ),
-    },
-  ];
+
+  const [ignore, forceUpdate] = useReducer((x) => x + 1, 0);
+
   const Inc = (id: number) => {
     setComplst((prevComp) => {
       return prevComp.map((item) => {
@@ -145,11 +112,14 @@ export default function Home() {
       });
     });
   };
+  let [menu,setMenu] = useState('small')
 
-  const menuRef = useRef(null);
-
-  const bodyRef = useRef(null);
-  const appearRef = useRef(null);
+  
+  
+  const menuRef: any = useRef(null);
+  
+  const bodyRef: any = useRef(null);
+  const appearRef: any = useRef(null);
   const Menu = () => {
     menuRef.current.style.display = "none";
     appearRef.current.style.display = "flex";
@@ -164,7 +134,7 @@ export default function Home() {
       });
     });
   };
-  const viewRef = useRef(null);
+  const viewRef: any = useRef(null);
   const Detappear = () => {
     if ((viewRef.current.style.visibility = "hidden")) {
       viewRef.current.style.visibility = "visible";
@@ -184,12 +154,12 @@ export default function Home() {
       return item;
     });
     console.log(updatedData);
-
+    
     setDatas(updatedData);
   };
 
   const handleValue = (e: SelectChangeEvent<never[]>) => {
-    const value = e.target.value;
+    const value: any = e.target.value;
     setSelectValue(value);
   };
   const handleDet = (id: number) => {
@@ -199,22 +169,8 @@ export default function Home() {
       }
     });
   };
-
-  const Filter = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setFilter(event.target.value);
-    NxtFilter();
-  };
-  const NxtFilter = () => {
-    const updlst = Jdata.filter((data) => {
-      console.log(filter, data.name);
-      console.log(typeof filter, typeof data.name);
-      return data.name.toLowerCase().includes(filter.toLowerCase());
-    });
-    console.log(updlst);
-    setDatas(updlst);
-  };
+  const img = menu === "small" ? small : Logo
+  
   const Seperate = () => {
     Jdata.map((item) => {
       if (item.checked == true) {
@@ -223,10 +179,42 @@ export default function Home() {
         setCount(count);
       }
     });
-    console.log(count);
   };
-  const navRef = useRef(null);
-  const sdumRef = useRef(null);
+  const Pop = () => {
+    setMenu("large")
+    const interval = setInterval(() => {
+      menu1Ref.current.style.visibility = "visible";
+    }, 300);
+    menu1Ref.current.style.width = "100px"
+    oRef.current.style.visibility = "visible";
+    tRef.current.style.visibility = "visible";
+    thRef.current.style.visibility = "visible";
+    fRef.current.style.visibility = "visible";
+    fiRef.current.style.visibility = "visible";
+    sRef.current.style.visibility = "visible";
+    moreRef.current.style.visibility = "visible";
+    hvrRef.current.style.width = "250px";
+    return () => clearInterval(interval);
+  };
+  const DisPop = () => {
+    setMenu("small")
+    const interval = setInterval(() => {
+      menu1Ref.current.style.visibility = "visible";
+    }, 300);
+    menu1Ref.current.style.width = "30px"
+    oRef.current.style.visibility = "hidden";
+    tRef.current.style.visibility = "hidden";
+    thRef.current.style.visibility = "hidden";
+    fRef.current.style.visibility = "hidden";
+    fiRef.current.style.visibility = "hidden";
+    sRef.current.style.visibility = "hidden";
+    moreRef.current.style.visibility = "hidden";
+    hvrRef.current.style.width = "70px";
+    return () => clearInterval(interval);
+  };
+  const navRef: any = useRef(null);
+  const sdumRef: any = useRef(null);
+  const scrollRef: any = useRef(null);
   const handleScroll = (scrollAmount: number) => {
     const newScrollPosition = scrollPosition + scrollAmount;
 
@@ -234,6 +222,21 @@ export default function Home() {
 
     containerRef.current.scrollLeft = newScrollPosition;
   };
+  const handleMulScroll = (scrollAmount: number) => {
+    const newScrollPosition = scrollPosition + scrollAmount;
+
+    setScrollPosition(newScrollPosition);
+    console.log("move");
+
+    scrollRef.current.scrollLeft = newScrollPosition;
+  };
+  const Filter = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setFilter(event.target.value);
+  };
+  console.log(filter);
+
   const MulSelect = () => {
     const upd = Jdata.map((data) => {
       if (data.checked === true) {
@@ -241,30 +244,44 @@ export default function Home() {
       } else {
         return { ...data, checked: true };
       }
-      return data;
     });
     setDatas(upd);
     console.log(Jdata);
   };
-  const MulInc = (skuid: number,ky:string) => {
-        const upd = Jdata.map((item) => {
-          if (item.skuid === skuid) {
-            const counts: { [key: string]: number } = item.counts;
-            Object.keys(counts).forEach((key) => {
-              if (key === ky) {
-                counts[key] += 1;
-                return {...item.counts,key:counts[key]}
-              }
-              return {...item,counts:item.counts}
-            });
-            console.log(item)
+  const MulInc = (skuid: number, ky: string) => {
+    const upd = Jdata.map((item) => {
+      if (item.skuid === skuid) {
+        const counts: { [key: string]: number } = item.counts;
+        Object.keys(counts).forEach((key) => {
+          if (key === ky) {
+            counts[key] += 1;
+            return { ...item.counts, key: counts[key] };
           }
-        })
-        return {...Jdata,upd};
-      
-        
-    
-      };
+          return { ...item, counts: item.counts };
+        });
+        console.log(item);
+      }
+    });
+    return { ...Jdata, upd };
+  };
+  const MulDec = (skuid: number, ky: string) => {
+    const upd = Jdata.map((item) => {
+      if (item.skuid === skuid) {
+        const counts: { [key: string]: number } = item.counts;
+        Object.keys(counts).forEach((key) => {
+          if (key === ky) {
+            if (counts[key] > 1) {
+              counts[key] -= 1;
+              return { ...item.counts, key: counts[key] };
+            }
+          }
+          return { ...item, counts: item.counts };
+        });
+        console.log(item);
+      }
+    });
+    return { ...Jdata, upd };
+  };
   const handleDelete = (id: number) => {
     console.log("Del");
     const updlst = Jdata.filter((item) => item.skuid != id);
@@ -272,19 +289,15 @@ export default function Home() {
     console.log(Jdata);
   };
 
-  const myRef = useRef(null);
-  const rRef = useRef(null);
-  const chanRef = useRef(null);
+  const myRef: any = useRef(null);
+  const rRef: any = useRef(null);
+  const chanRef: any = useRef(null);
 
   const appear = () => {
     if (count == 1) {
       if ((chanRef.current.style.visibility = "hidden")) {
         chanRef.current.style.visibility = "visible";
         dummyRef.current.style.filter = "brightness(50%)";
-
-        // sdumRef.current.style.zIndex = "1"
-        // sdumRef.current.style.filter = "brightness(1)"
-        // dummyRef.current.style.filter = "brightness(50%)"
       } else {
         chanRef.current.style.visibility = "hidden";
       }
@@ -302,10 +315,8 @@ export default function Home() {
       mulRef.current.style.visibility = "hidden";
     }
   };
-  useEffect(() => {
-    NxtFilter();
-    
-  }, [filter]);
+
+  useEffect(() => {}, [Jdata]);
   const options = [
     { id: 1, value: "Shoes", label: "Shoes" },
     { id: 2, value: "Shirts", label: "Shirts" },
@@ -376,20 +387,7 @@ export default function Home() {
                 >
                   {comp.name}
                 </p>
-                <p
-                  style={{
-                    color: "#A0AEC0",
-                    fontFamily: "Inter",
-                    fontSize: "small",
-                    fontWeight: "500",
-                    width: "113px",
-                    display: "inline-block",
-                    paddingBottom: "0.3rem",
-                    borderBottom: "1px solid #f3f5f9",
-                  }}
-                >
-                  Belong Interactive
-                </p>
+
                 <div
                   className={`${styles.flex_ad}  ${styles.border}`}
                   style={{ padding: "0 1rem" }}
@@ -403,7 +401,7 @@ export default function Home() {
                       src={left}
                       width={5}
                       height={2}
-                      style={{ transform: "translateX(-30px)" }}
+                      style={{ transform: "translateX(-20px)" }}
                       alt="Decrease"
                     />
                   </button>
@@ -416,7 +414,7 @@ export default function Home() {
                     <Image
                       src={right}
                       width={5}
-                      style={{ transform: "translateX(30px" }}
+                      style={{ transform: "translateX(20px" }}
                       height={2}
                       alt="Increase"
                     />
@@ -456,7 +454,10 @@ export default function Home() {
           >
             Linked Channels
           </p>
-          <button>
+          <button
+            style={{ display: "flex", gap: "0.2rem", alignItems: "center" }}
+          >
+            <Image src={Plus} width={20} height={10} alt="plus" />
             <p
               style={{
                 color: "#0057AD",
@@ -486,7 +487,6 @@ export default function Home() {
           className={`${styles.negrid}`}
           style={{
             paddingLeft: "0.5rem",
-
             paddingBottom: "0.2rem",
           }}
         >
@@ -500,145 +500,205 @@ export default function Home() {
                 fontWeight: "600",
               }}
             >
-              Channels
-            </p>
-            <p>H</p>
-          </div>
-          <div>
-            <p
-              style={{
-                color: "#2B3674",
-                fontSize: "DM Sans",
-                fontWeight: "600",
-                textAlign: "center",
-                borderTop: "1px solid #f3f5f9",
-                borderBottom: "1px solid #f3f5f9",
-              }}
-            >
               Categories
             </p>
+            <div>
+              <p style={{ visibility: "hidden" }}>H</p>
+            </div>
 
             <ul
-              className={styles.flex}
-              style={{ gap: "2rem", marginLeft: "8rem" }}
+              style={{
+                gap: "0.9rem",
+                display: "flex",
+                flexDirection: "column",
+                borderRight: "1px solid #f3f5f9",
+              }}
             >
-              {complst.map((com) => (
-                <li key={com.id}>{com.name}</li>
+              {Jdata.filter((data) => {
+                // console.log("data======>", data);
+                return data.checked === true;
+              }).map((data) => (
+                <li className={styles.flex}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      paddingBottom: "1rem",
+                    }}
+                  >
+                    <p
+                      style={{
+                        color: "#393939",
+                        fontFamily: "DM Sans",
+                        fontSize: "medium",
+                      }}
+                    >
+                      {data.Category}
+                    </p>
+                    <p
+                      style={{
+                        color: "#393939",
+                        fontFamily: "DM Sans",
+                        fontSize: "medium",
+                      }}
+                    >
+                      (
+                    </p>
+                    <p
+                      style={{
+                        color: "#0057AD",
+                        fontFamily: "DM Sans",
+                        fontSize: "medium",
+                      }}
+                    >
+                      {data.Quantity}
+                    </p>
+                    <p
+                      style={{
+                        color: "#393939",
+                        fontFamily: "DM Sans",
+                        fontSize: "medium",
+                      }}
+                    >
+                      /40)
+                    </p>
+                  </div>
+                </li>
               ))}
             </ul>
           </div>
-        </div>
-        {/* /*   {//Now}*/}
-        <ul style={{ gap: "1rem" }}>
-          {Jdata.filter((data) => {
-            // console.log("data======>", data);
-            return data.checked === true;
-          }).map((data) => (
-            <li className={styles.flex}>
-              <p>
-                {data.name}/{data.skuid}
-              </p>
-              <div className={styles.flex} style={{ gap: "2rem" }}>
-                {Object.entries(data.counts).map(([key, value]) => {
-                  return (
-                    //
-                    <li
-                      className={`${styles.flex_ad} ${styles.border}`}
-                      style={{ gap: "1rem" }}
-                    >
-                      <Image src={left} alt="-" width={5} height={5} />
-                      <p>{value}</p>
-                      <Image
-                        src={right}
-                        alt="+"
-                        width={5}
-                        height={5}
-                        onClick={() => {
-                          MulInc(data.skuid, key);
-                          console.log(Jdata)
-                          // data.counts[key] += 1;
-                          // setDatas(prev=>{... prev , data})
-                          return;
-                        }}
-                      />
-                    </li>
-                  );
-                })}
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        {/* <div className={styles.negrid}>
-          <div className={`${styles.flex} ${styles.mulcomp} ${styles.overx}`}>
-            <div>
-              <p className={styles.comp}>Flipkart</p>
-            </div>
-            <div>
-              <p className={styles.comp}>Amazon</p>
-            </div>
-            <div>
-              <p className={styles.comp}>Meesho</p>
-            </div>
-            <div>
-              <p className={styles.comp}>Ajio</p>
-            </div>
-            <div>
-              <p className={styles.comp}>Myntraa</p>
-            </div>
-          </div>
-        </div> */}
-        <div>
-          {/* <ul>
-            <div className={`${styles.flexcol}`}>
-              {Jdata.filter((item) => item.checked === true).map((item) => (
-                <li key={`${item.skuid}`} className={`${styles.flex}`}>
-                  <p className={styles.comp}>
-                    {item.Category}({item.Quantity}/{item.stockonhand})
-                  </p>
-                  {complst.map((comp) => (
-                    <div
-                      className={`${styles.flex}  ${styles.border} ${styles.lstnum}`}
-                      style={{ width: "200px" }}
-                    >
-                      <button
-                        onClick={() => {
-                          Dec(comp.id);
-                        }}
-                      >
-                        <Image
-                          src={"/image/left.png"}
-                          width={5}
-                          height={2}
-                          alt="Decrease"
-                        />
-                      </button>
-                      <p style={{ marginLeft: ".3rem", marginRight: ".3rem" }}>
-                        {comp.quantity}
-                      </p>
-                      <button
-                        onClick={() => {
-                          Inc(comp.id);
-                        }}
-                      >
-                        <Image
-                          src={"/image/right.png"}
-                          width={5}
-                          height={2}
-                          alt="Increase"
-                        />
-                      </button>
-                    </div>
-                  ))}
-                </li>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              transform: "translateX(30px)",
+              marginRight: "1rem",
+              marginTop: "1rem",
+            }}
+            className={styles.dv}
+            ref={scrollRef}
+          >
+            {/* //right */}
+            <div
+              style={{
+                display: "flex",
+                paddingBottom: ".4rem",
+                justifyContent: "space-between",
+                transform: "translateX(20px)",
+              }}
+            >
+              {complst.map((com) => (
+                <div
+                  key={com.id}
+                  style={{
+                    height: "30px",
+                    width: "30px",
+                    marginRight: "-3rem",
+                  }}
+                >
+                  <Image src={com.src} width={20} height={20} alt="logo" />
+                </div>
               ))}
             </div>
-          </ul> */}
+            <ul
+              style={{
+                gap: "1rem",
+                display: "flex",
+                flexDirection: "column",
+                width: "fit-content",
+              }}
+            >
+              {Jdata.filter((data) => {
+                return data.checked === true;
+              }).map((data) => (
+                <li
+                  className={styles.flex}
+                  style={{
+                    width: "fit-content",
+                    gap: "1.9rem",
+                    borderBottom: "1px solid #f3f5f8",
+                    paddingBottom: "1rem",
+                  }}
+                >
+                  {Object.entries(data.counts).map(([key, value]) => {
+                    return (
+                      //
+                      <li
+                        className={`${styles.flex_ad}`}
+                        style={{
+                          gap: "1rem",
+                          border: "1px solid #dedede",
+                          borderRadius: "11px",
+                          padding: "0 0.9rem",
+                        }}
+                      >
+                        <Image
+                          src={left}
+                          alt="-"
+                          width={5}
+                          height={5}
+                          onClick={() => {
+                            MulDec(data.skuid, key);
+                            console.log(Jdata);
+                            forceUpdate();
+
+                            return;
+                          }}
+                          className={styles.hov}
+                        />
+                        <p style={{ color: "#2C7BE5", fontSize: "small" }}>
+                          {value}
+                        </p>
+                        <Image
+                          src={right}
+                          alt="+"
+                          width={5}
+                          height={5}
+                          onClick={() => {
+                            MulInc(data.skuid, key);
+                            console.log(Jdata);
+                            forceUpdate();
+
+                            return;
+                          }}
+                        />
+                      </li>
+                    );
+                  })}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <button>
+              <Image
+                src={left}
+                width={10}
+                height={10}
+                alt="left"
+                onClick={() => handleMulScroll(-200)}
+                style={{ transform: "translate(140px,-290px)" }}
+              />
+            </button>
+            <button>
+              <Image
+                src={right}
+                width={10}
+                height={10}
+                onClick={() => handleMulScroll(200)}
+                alt="right"
+                style={{ transform: "translate(520px,-290px)" }}
+              />
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles.sdummy} ref={sdumRef}>
         <ul className={styles.det} ref={viewRef}>
-          <div className={`${styles.flex} ${styles.space}`}>
+          <div
+            className={`${styles.flex} ${styles.space}`}
+            style={{ marginBottom: "1rem" }}
+          >
             <p
               style={{
                 color: "#2B3674",
@@ -651,7 +711,6 @@ export default function Home() {
             </p>
             <button
               style={{
-                // color: "#2C7BE5",
                 color: "#0057AD",
                 fontSize: "small",
                 display: "flex",
@@ -682,8 +741,9 @@ export default function Home() {
                         marginRight: "0.5rem",
                       }}
                     >
-                      Product Name :
+                      Product Name
                     </p>
+                    <p>:</p>
                     <p
                       style={{
                         color: "#2B3674",
@@ -707,8 +767,9 @@ export default function Home() {
                         marginRight: "0.5rem",
                       }}
                     >
-                      SELLER SKU DETAILS :
+                      SELLER SKU DETAILS
                     </p>
+                    <p>:</p>
                     <p
                       style={{
                         color: "#2B3674",
@@ -731,8 +792,9 @@ export default function Home() {
                         marginRight: "0.5rem",
                       }}
                     >
-                      CATEGORY:
+                      CATEGORY
                     </p>
+                    <p>:</p>
                     <p
                       style={{
                         color: "#2B3674",
@@ -779,8 +841,9 @@ export default function Home() {
                         marginRight: "0.5rem",
                       }}
                     >
-                      DESCRIPTION:
+                      DESCRIPTION
                     </p>
+                    <p>:</p>
                     <p
                       style={{
                         color: "#2B3674",
@@ -794,7 +857,9 @@ export default function Home() {
                   </div>
                 </section>
                 <section>
-                  <p style={{ color: "#393939" }}>Quantity & Pricing</p>
+                  <p style={{ color: "#393939", fontWeight: "600" }}>
+                    Quantity & Pricing
+                  </p>
                   <div
                     className={`${styles.flex} ${styles.flex_align} ${styles.detView}`}
                   >
@@ -807,8 +872,9 @@ export default function Home() {
                         marginRight: "0.5rem",
                       }}
                     >
-                      PRICE:
+                      PRICE
                     </p>
+                    <p>:</p>
                     <p
                       style={{
                         color: "#2B3674",
@@ -831,8 +897,9 @@ export default function Home() {
                         marginRight: "0.5rem",
                       }}
                     >
-                      SELLING PRICE :
+                      SELLING PRICE
                     </p>
+                    <p>:</p>
                     <p
                       style={{
                         color: "#2B3674",
@@ -855,8 +922,9 @@ export default function Home() {
                         marginRight: "0.5rem",
                       }}
                     >
-                      QUANTITY :
+                      QUANTITY
                     </p>
+                    <p>:</p>
                     <p
                       style={{
                         color: "#2B3674",
@@ -876,110 +944,122 @@ export default function Home() {
       </div>
       <section ref={bodyRef} className={styles.dumm}>
         <main className={styles.main} ref={dummyRef}>
-          <section
+          <div
             className={styles.left}
-            style={{ display: "none", transition: "all 0.3s" }}
-            ref={appearRef}
+            onMouseEnter={Pop}
+            onMouseLeave={DisPop}
+            ref={hvrRef}
           >
+            <div
+              style={{
+                height: "100px",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Image
+                src={img}
+                height={30}
+                width={30}
+                alt="logo"
+                style={{ marginLeft: "1.3rem", marginBottom: "1rem" }}
+                ref={menu1Ref}
+              />
+
+              <Image
+                src={seperator}
+                height={100}
+                width={500}
+                alt="line"
+                style={{ height: "10px", width: "500px" }}
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+                marginLeft: "2rem",
+              }}
+            >
+              <div className={`${styles.flex} ${styles.gap}`}>
+                <Image src={home} alt="home" height={20} width={20} />
+                <p className={styles.lp} ref={oRef}>
+                  Dashboard
+                </p>
+              </div>
+              <div className={`${styles.flex} ${styles.gap}`}>
+                <Image src={inventory} alt="home" height={20} width={20} />
+                <p className={styles.lp} ref={tRef}>
+                  Inventory
+                </p>
+              </div>
+              <div className={`${styles.flex} ${styles.gap}`}>
+                <Image src={catalogue} alt="home" height={20} width={20} />
+                <p
+                  className={`${styles.lp}`}
+                  style={{ color: "#FFA823" }}
+                  ref={thRef}
+                >
+                  Catalogue
+                </p>
+              </div>
+              <div
+                className={`${styles.flex} ${styles.gap}`}
+                style={{ height: "29px" }}
+              >
+                <div style={{ height: "30px", width: "20px" }}>
+                  <Image src={product} alt="home" height={20} width={20} />
+                </div>
+                <div
+                  ref={fRef}
+                  style={{
+                    visibility: "hidden",
+                    width: "100px",
+                    display: "flex",
+                    gap: "0.2rem",
+                    marginTop: ".1rem",
+                    fontFamily: "DM Sans",
+                    color: "#b8b8b8",
+                    fontWeight: "590",
+                    fontSize: "13px",
+                  }}
+                >
+                  {" "}
+                  <p>Product</p> <p>Intelligence</p>
+                </div>
+              </div>
+              <div className={`${styles.flex} ${styles.gap}`}>
+                <Image src={smallprofile} alt="home" height={20} width={20} />
+                <p className={styles.lp} ref={fiRef}>
+                  Profile
+                </p>
+              </div>
+              <div className={`${styles.flex} ${styles.gap}`}>
+                <Image src={signin} alt="home" height={20} width={20} />
+                <p className={styles.lp} ref={sRef}>
+                  Sign In
+                </p>
+              </div>
+            </div>
             <div>
-              <IoMdClose
-                style={{
-                  transform: "translate(190px,-10px)",
-                  color: "white",
-                  fontSize: "medium",
-                }}
-                onClick={() => {
-                  (menuRef.current.style.display = "block"),
-                    (appearRef.current.style.display = "none");
-                  console.log("Exit");
-                }}
-              />
-              <Image
-                src={NavLogo}
-                alt="Logo"
-                width={140}
-                height={20}
-                className={styles.marg_left}
-              />
-              <Image
-                src={"/image/Separator.png"}
-                alt="Logo"
-                width={180}
-                height={20}
-              />
-            </div>
-            <div className={styles.flxc}>
-              <div className={`${styles.flx}`}>
+              <div className={styles.more} ref={moreRef}>
                 <Image
-                  src={"/image/home.png"}
-                  alt="home"
-                  width={18.4}
-                  height={16}
+                  src={"/image/info.png"}
+                  alt="info"
+                  width={35}
+                  height={35}
                 />
-                <p className={`${styles.lp}`}>Dashboard</p>
-              </div>
-              <div className={styles.flx}>
-                <Image
-                  src={"/image/Icon.png"}
-                  alt="inventory"
-                  width={18}
-                  height={18}
-                />
-                <p className={styles.lp}>Inventory</p>
-              </div>
-              <div className={`${styles.flx}`}>
-                <Image
-                  src={"/image/catalogue.png"}
-                  alt="catalogue"
-                  width={16.66}
-                  height={18.41}
-                />
-                <p className={`${styles.lp} ${styles.focus}`}>Catalogue</p>
-              </div>
-              <div className={styles.flx}>
-                <Image
-                  src={"/image/productintell.png"}
-                  alt="prod-intelligence"
-                  width={16.33}
-                  height={16.33}
-                />
-                <p className={styles.lp}>Product Intelligence</p>
-              </div>
-              <div className={styles.flx}>
-                <Image
-                  src={"/image/profile.png"}
-                  alt="profile"
-                  width={16}
-                  height={16}
-                />
-                <p className={styles.lp}>Profile</p>
-              </div>
-              <div className={styles.flx}>
-                <Image
-                  src={"/image/signin.png"}
-                  alt="sign-in"
-                  width={16}
-                  height={21}
-                />
-                <p className={styles.lp}>Sign-In</p>
+                <p className={styles.wh}>
+                  Get more <br />
+                  benefits
+                </p>
+                <button className={`${styles.wh} ${styles.btn}`}>
+                  Subscribe
+                </button>
               </div>
             </div>
-            <div className={styles.more}>
-              <Image
-                src={"/image/info.png"}
-                alt="info"
-                width={35}
-                height={35}
-              />
-              <p className={styles.wh}>
-                Get more <br />
-                benefits
-              </p>
-              <button className={`${styles.wh} ${styles.btn}`}>
-                Subscribe
-              </button>
-            </div>
-          </section>
+          </div>
           <div
             className={`${styles.con}`}
             style={{
@@ -987,16 +1067,7 @@ export default function Home() {
             }}
             ref={menuRef}
           >
-            <Image
-              src={Logo}
-              width={100}
-              height={100}
-              alt="menu"
-              ref={navRef}
-              className={styles.navLogo}
-              onMouseOver={() => Menu()}
-              style={{ transform: "translate(30px,-15px)" }}
-            />
+            
           </div>
           <section className={styles.right} style={{ width: "1300px" }}>
             <section className={`${styles.flex} ${styles.top}`}>
@@ -1045,7 +1116,8 @@ export default function Home() {
                           return selected.join(", ");
                         }}
                       >
-                        {options.map((opt) => (
+                        {/* //FontFamily */}
+                        {options.map((opt: any) => (
                           <MenuItem key={opt.id} value={opt.value}>
                             <ListItemIcon>
                               <Checkbox
@@ -1060,7 +1132,16 @@ export default function Home() {
                               ></Checkbox>
                             </ListItemIcon>
                             <ListItemText
-                              primary={opt.label}
+                              primary={
+                                <Typography
+                                  style={{
+                                    fontFamily: "DM Sans",
+                                    fontSize: "small",
+                                  }}
+                                >
+                                  {opt.label}
+                                </Typography>
+                              }
                               sx={{ fontWeight: "600", color: "#2B3674" }}
                             ></ListItemText>
                           </MenuItem>
@@ -1110,7 +1191,11 @@ export default function Home() {
                     />
                     <p
                       className={styles.same}
-                      style={{ fontSize: "9.7px", textTransform: "uppercase" }}
+                      style={{
+                        fontSize: "9.7px",
+                        textTransform: "uppercase",
+                        transform: "translateX(10px)",
+                      }}
                     >
                       Product Name
                     </p>
@@ -1121,7 +1206,7 @@ export default function Home() {
                       fontSize: "10px",
                       fontWeight: "900",
                       marginLeft: "1.3rem",
-                      transform: "translateX(20px)",
+                      transform: "translateX(40px)",
                     }}
                   >
                     SELLER SKU ID
@@ -1132,7 +1217,7 @@ export default function Home() {
                       textTransform: "uppercase",
                       display: "inline",
                       fontSize: "10px",
-                      transform: "translateX(20px)",
+                      transform: "translateX(60px)",
                     }}
                   >
                     Category
@@ -1143,7 +1228,7 @@ export default function Home() {
                       textTransform: "uppercase",
                       display: "inline",
                       fontSize: "10px",
-                      transform: "translateX(20px)",
+                      transform: "translateX(40px)",
                     }}
                   >
                     Product Details
@@ -1153,7 +1238,7 @@ export default function Home() {
                     style={{
                       textTransform: "uppercase",
                       fontSize: "10px",
-                      transform: "translateX(20px)",
+                      transform: "translateX(50px)",
                     }}
                   >
                     Model Number
@@ -1164,7 +1249,7 @@ export default function Home() {
                       textTransform: "uppercase",
                       fontSize: "10px",
                       marginLeft: "1.3rem",
-                      transform: "translateX(20px)",
+                      transform: "translateX(40px)",
                     }}
                   >
                     Price
@@ -1202,131 +1287,150 @@ export default function Home() {
                     style={{ textTransform: "uppercase", fontSize: "10px" }}
                   ></p>
                 </div>
-
-                {Jdata.map((data) => (
-                  <li
-                    className={`${styles.title} ${styles.final} ${styles.reduce}`}
-                  >
-                    <div
-                      className={`${styles.flex_ad} ${styles.verticalup}`}
-                      style={{ marginLeft: "1rem", width: "150px" }}
+                <ul
+                  style={{
+                    backgroundColor: "white",
+                    borderRadius: "11px",
+                  }}
+                >
+                  {Jdata.filter((item) => {
+                    return filter.toLowerCase() === ""
+                      ? item
+                      : item.name.toLowerCase().includes(filter);
+                  }).map((data) => (
+                    <li
+                      className={`${styles.title} ${styles.final} ${styles.reduce}`}
+                      key={data.skuid}
                     >
-                      <input
-                        type="checkbox"
-                        checked={data.checked}
-                        onChange={() => {
-                          handleClick(data.skuid);
-                          console.log(typeof data.checked);
-                        }}
-                      />
-                      <Image src={Shoe} alt="product" width={45} height={45} />
+                      <div
+                        className={`${styles.flex_ad} ${styles.verticalup}`}
+                        style={{ marginLeft: "1rem", width: "150px" }}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={data.checked}
+                          onChange={() => {
+                            handleClick(data.skuid);
+                            console.log(typeof data.checked);
+                          }}
+                        />
+                        <Image
+                          src={data.src}
+                          alt="product"
+                          width={45}
+                          height={45}
+                        />
+                        <p
+                          className={`${styles.same} `}
+                          style={{
+                            fontSize: "11px",
+                            width: "150px",
+                            textAlign: "center",
+                          }}
+                        >
+                          {data.name}
+                        </p>
+                      </div>
                       <p
-                        className={`${styles.same} `}
+                        className={styles.same}
                         style={{
                           fontSize: "11px",
-                          width: "150px",
-                          textAlign: "center",
+                          marginLeft: "1.4rem",
+                          width: "fit-content",
+                          transform: "translateX(60px)",
                         }}
                       >
-                        {data.name}
+                        {data.skuid}
                       </p>
-                    </div>
-                    <p
-                      className={styles.same}
-                      style={{
-                        fontSize: "11px",
-                        marginLeft: "1.4rem",
-                        width: "fit-content",
-                        transform: "translateX(40px)",
-                      }}
-                    >
-                      {data.skuid}
-                    </p>
-                    <p
-                      className={styles.same}
-                      style={{
-                        fontSize: "12px",
-                        marginLeft: "1rem",
-                        transform: "translateX(20px)",
-                      }}
-                    >
-                      {data.Category}
-                    </p>
-                    <p
-                      className={`${styles.same} ${styles.width}`}
-                      style={{ fontSize: "12px" }}
-                    >
-                      {data.Details}
-                    </p>
-                    <p
-                      className={styles.same}
-                      style={{
-                        fontSize: "12px",
-                        transform: "translateX(20px)",
-                      }}
-                    >
-                      {data.modelno}
-                    </p>
-                    <p
-                      className={styles.same}
-                      style={{
-                        fontSize: "12px",
-                        marginLeft: "1.3rem",
-                        transform: "translateX(20px)",
-                      }}
-                    >
-                      {data.Cost_Price}
-                    </p>
-                    <p
-                      className={styles.same}
-                      style={{
-                        fontSize: "12px",
-                        marginLeft: "1rem",
-                        transform: "translateX(20px)",
-                      }}
-                    >
-                      {data.Selling_Price}
-                    </p>
-                    <p
-                      className={styles.same}
-                      style={{
-                        fontSize: "12px",
-                        marginLeft: "1rem",
-                        transform: "translateX(20px)",
-                      }}
-                    >
-                      {data.Quantity}
-                    </p>
-                    <Image
-                      src={"/image/pencil.png"}
-                      width={20}
-                      height={20}
-                      alt="edit"
-                      style={{ transform: "translateX(20px)" }}
-                    />
-                    <Image
-                      src={"/image/bin.png"}
-                      width={20}
-                      height={20}
-                      alt="delete"
-                      onClick={() => handleDelete(data.skuid)}
-                      style={{
-                        marginRight: "20px",
-                        transform: "translateX(-20px)",
-                      }}
-                    />
-                    <p
-                      ref={detRef}
-                      className={`${styles.same} ${styles.red}`}
-                      onClick={() => {
-                        handleDet(data.skuid), Detappear();
-                      }}
-                      style={{ transform: "translateX(-40px)" }}
-                    >
-                      Details
-                    </p>
-                  </li>
-                ))}
+                      <p
+                        className={styles.same}
+                        style={{
+                          fontSize: "12px",
+                          marginLeft: "1rem",
+                          transform: "translateX(50px)",
+                        }}
+                      >
+                        {data.Category}
+                      </p>
+                      <p
+                        className={`${styles.same} ${styles.width}`}
+                        style={{
+                          fontSize: "12px",
+                          transform: "translateX(40px)",
+                        }}
+                      >
+                        {data.Details}
+                      </p>
+                      <p
+                        className={styles.same}
+                        style={{
+                          fontSize: "12px",
+                          transform: "translateX(55px)",
+                        }}
+                      >
+                        {data.modelno}
+                      </p>
+                      <p
+                        className={styles.same}
+                        style={{
+                          fontSize: "12px",
+                          marginLeft: "1.3rem",
+                          transform: "translateX(40px)",
+                        }}
+                      >
+                        {data.Cost_Price}
+                      </p>
+                      <p
+                        className={styles.same}
+                        style={{
+                          fontSize: "12px",
+                          marginLeft: "1rem",
+                          transform: "translateX(20px)",
+                        }}
+                      >
+                        {data.Selling_Price}
+                      </p>
+                      <p
+                        className={styles.same}
+                        style={{
+                          fontSize: "12px",
+                          marginLeft: "1rem",
+                          transform: "translateX(20px)",
+                        }}
+                      >
+                        {data.Quantity}
+                      </p>
+                      <Image
+                        src={"/image/pencil.png"}
+                        width={20}
+                        height={20}
+                        alt="edit"
+                        style={{ transform: "translateX(20px)" }}
+                      />
+                      <Image
+                        src={"/image/bin.png"}
+                        width={20}
+                        height={20}
+                        alt="delete"
+                        onClick={() => handleDelete(data.skuid)}
+                        style={{
+                          marginRight: "20px",
+                          transform: "translateX(-20px)",
+                        }}
+                      />
+                      <p
+                        ref={detRef}
+                        className={`${styles.same} ${styles.red}`}
+                        onClick={() => {
+                          handleDet(data.skuid), Detappear();
+                        }}
+                        style={{ transform: "translateX(-40px)" }}
+                      >
+                        Details
+                      </p>
+                    </li>
+                  ))}
+                </ul>
               </ul>
             </section>
           </section>
